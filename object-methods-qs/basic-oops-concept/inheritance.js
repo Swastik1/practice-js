@@ -9,7 +9,7 @@ class Animal {
 }
 
 class Dog extends Animal {
-    speak() {
+    speakDog() {
         console.log('Woof!');
     }
 }
