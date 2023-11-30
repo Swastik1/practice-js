@@ -32,3 +32,10 @@ const shift = notZero.concat(zero);
 console.log(notZero);
 console.log(zero);
 console.log(shift);
+
+// Method 3 
+
+let nonZero = a.filter((item) => item !== 0);
+let zeroItem = a.filter((item) => item === 0);
+let mergeArr = [...nonZero, ...zeroItem];
+console.log(mergeArr);
