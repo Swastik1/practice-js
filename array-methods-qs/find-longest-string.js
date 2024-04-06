@@ -4,36 +4,40 @@ const stringsArray = ["apple", "banana", "kiwi", "strawberry", "orange"];
 
 //Method 1
 
-function findLongarr(arr){
-    let longestElement = null;
-    for (let i=0; i < arr.length; i++){
-        let element = arr[i];
-        if(element.length > 6){
-            longestElement = element;
-        }
+function findLongarr(arr) {
+  if (arr.length === 0) {
+    return null;
+  }
+
+  let longestElement = arr[0];
+  for (let i = 1; i < arr.length; i++) {
+    if (arr[i].length > longestElement.length) {
+      longestElement = arr[i];
     }
-    return longestElement;
+  }
+
+  return longestElement;
 }
 
-console.log('solved using normal for loop ------',findLongarr(stringsArray));
+console.log("solved using normal for loop ------", findLongarr(stringsArray));
 
 //Method 2
 
-function longWord(arr){
-    let longestWord = null;
-    for (num of arr){
-        if(num.length > 6){
-            longestWord = num;
-        }
+function longWord(arr) {
+  let longestWord = arr[0];
+  for (num of arr) {
+    if (num.length > longestWord.length) {
+      longestWord = num;
     }
-    return longestWord;
+  }
+  return longestWord;
 }
 
-console.log('solved using for of ------ ',longWord(stringsArray));
-
+console.log("solved using for of ------ ", longWord(stringsArray));
 
 // Method 3
-
-const filterWord = stringsArray.filter((word) => word.length > 6);
-const wordLong = filterWord.reduce((item,acc) => item + acc,'');
-console.log('solved using filter and reduce ------',wordLong);
+const lengthsArray = stringsArray.map((word) => word.length);
+const maxLength = Math.max(...lengthsArray);
+const filterWord = stringsArray.filter((word) => word.length === maxLength);
+const maxWord = filterWord.length > 0 ? filterWord[0] : null;
+console.log("solved using filter method --- ", maxWord);
